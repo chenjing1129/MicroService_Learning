@@ -23,7 +23,7 @@ public class ShareController {
     @GetMapping("/{id}")
     public ShareVO getShareById(@PathVariable Integer id) {
         Share share = shareService.getShareById(id);
-        UserDTO user = userService.getUserById(share.getUserId());
+        UserDTO user = userService.getUserById(share.getUserId()).getData();
         ShareVO shareVO = new ShareVO();
         shareVO.setShare(share);
         shareVO.setUser(user);
