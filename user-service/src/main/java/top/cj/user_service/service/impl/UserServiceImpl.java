@@ -18,9 +18,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public UserDTO getInfoById(Integer id) {
         User user = userMapper.selectById(id);
         UserDTO userDTO = new UserDTO();
-        userDTO.setUserId(user.getId());
-        userDTO.setUserName(user.getUserName());
-        userDTO.setAvatarUrl(user.getAvatarUrl());
-        return userDTO;
+        if (user != null) {
+            userDTO.setUserId(user.getId());
+            userDTO.setUserName(user.getUserName());
+            userDTO.setAvatarUrl(user.getAvatarUrl());
+            return userDTO;
+        } else {
+            return null;
+        }
+
     }
 }
